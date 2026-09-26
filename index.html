@@ -1,143 +1,714 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GlamZeal Jewelry</title>
+<meta name="theme-color" content="#080808">
+<title>GlamZeal Jewelry | Wholesale & Retail</title>
+
+<!-- Luxury Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;background:#080808;color:white;font-family:Arial}
-header{text-align:center;padding:25px;background:#0d0d0d;border-bottom:1px solid #c9a227}
-h1{color:#d4af37;font-family:Georgia;font-size:32px}
-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-button{background:#d4af37;border:0;padding:12px 16px;border-radius:7px;font-weight:bold}
-main{padding:20px;max-width:700px;margin:auto}
-.page{display:none}.show{display:block}
-.card{background:#151515;padding:15px;margin:12px 0;border:1px solid #333;border-radius:10px}
-.gold{color:#d4af37}
-input{width:100%;padding:13px;margin:7px 0;background:#151515;color:white;border:1px solid #555;border-radius:7px}
-.price{color:#d4af37;font-weight:bold}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#080808;
+  color:#f5f5f5;
+  font-family:'Montserrat',Arial,sans-serif;
+}
+
+header{
+  text-align:center;
+  padding:28px 15px 20px;
+  background:linear-gradient(180deg,#111111,#080808);
+  border-bottom:1px solid #b8962e;
+}
+
+.logo{
+  margin:0;
+  color:#d4af37;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:46px;
+  font-weight:700;
+  letter-spacing:5px;
+}
+
+.tagline{
+  margin:2px 0 18px;
+  color:#ddd;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+nav{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+button{
+  background:linear-gradient(135deg,#d4af37,#f1d77a,#b88a16);
+  color:#080808;
+  border:0;
+  padding:12px 16px;
+  border-radius:7px;
+  font-weight:700;
+  font-family:'Montserrat',Arial,sans-serif;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.88;
+}
+
+main{
+  padding:20px 14px 40px;
+  max-width:850px;
+  margin:auto;
+}
+
+.page{
+  display:none;
+}
+
+.show{
+  display:block;
+}
+
+.gold{
+  color:#d4af37;
+}
+
+.hero{
+  text-align:center;
+  padding:28px 10px;
+}
+
+.hero h2{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:38px;
+  margin:5px 0 10px;
+}
+
+.hero p{
+  color:#ccc;
+  line-height:1.7;
+}
+
+.branch{
+  background:linear-gradient(145deg,#171717,#0e0e0e);
+  border:1px solid #3a3a3a;
+  border-left:3px solid #d4af37;
+  padding:20px;
+  margin:20px 0;
+  border-radius:12px;
+}
+
+.branch h3{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:#d4af37;
+  font-size:25px;
+  margin-top:0;
+}
+
+.section-title{
+  text-align:center;
+  color:#d4af37;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:35px;
+  margin:15px 0 25px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.card{
+  background:linear-gradient(145deg,#171717,#0e0e0e);
+  border:1px solid #303030;
+  border-radius:12px;
+  padding:12px;
+  overflow:hidden;
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  border-radius:9px;
+  background:#111;
+}
+
+.product-name{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:23px;
+  color:#f2f2f2;
+  margin:12px 0 5px;
+}
+
+.product-type{
+  color:#999;
+  font-size:11px;
+  margin-bottom:9px;
+}
+
+.price{
+  color:#d4af37;
+  font-size:18px;
+  font-weight:700;
+  margin:8px 0 12px;
+}
+
+.wholesale{
+  font-size:10px;
+  color:#aaa;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.add-btn{
+  width:100%;
+  margin-top:3px;
+}
+
+.empty{
+  text-align:center;
+  color:#aaa;
+  padding:25px 5px;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #333;
+  padding:14px 5px;
+}
+
+.cart-item-name{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:20px;
+}
+
+.remove-btn{
+  background:#222;
+  color:#ddd;
+  border:1px solid #555;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.total-box{
+  text-align:right;
+  padding:18px 5px;
+  font-size:22px;
+  font-weight:700;
+  color:#d4af37;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  background:#121212;
+  color:white;
+  border:1px solid #444;
+  border-radius:7px;
+  font-family:'Montserrat',Arial,sans-serif;
+}
+
+input:focus{
+  outline:none;
+  border-color:#d4af37;
+}
+
+.form-title{
+  color:#d4af37;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:28px;
+}
+
+.full-btn{
+  width:100%;
+  margin-top:8px;
+}
+
+.contact{
+  text-align:center;
+  margin-top:30px;
+  padding:20px;
+  border-top:1px solid #333;
+}
+
+.contact a{
+  color:#d4af37;
+  text-decoration:none;
+}
+
+footer{
+  text-align:center;
+  padding:25px 10px;
+  color:#777;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+@media(max-width:520px){
+  .products{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .logo{
+    font-size:38px;
+  }
+
+  .hero h2{
+    font-size:33px;
+  }
+
+  .product-name{
+    font-size:20px;
+  }
+
+  nav button{
+    padding:10px 12px;
+    font-size:11px;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>GLAMZEAL</h1>
-<p>JEWELRY • WHOLESALE • RETAIL</p>
-<nav>
-<button onclick="page('home')">Home</button>
-<button onclick="page('shop')">Shop</button>
-<button onclick="page('cart')">Cart (<span id="num">0</span>)</button>
-<button onclick="page('login')">Login</button>
-</nav>
+  <h1 class="logo">GLAMZEAL</h1>
+  <p class="tagline">JEWELRY • WHOLESALE • RETAIL</p>
+
+  <nav>
+    <button onclick="page('home')">HOME</button>
+    <button onclick="page('shop')">SHOP</button>
+    <button onclick="page('cart')">
+      CART (<span id="num">0</span>)
+    </button>
+    <button onclick="page('login')">LOGIN</button>
+  </nav>
 </header>
 
 <main>
 
+<!-- HOME -->
 <div id="home" class="page show">
-<h2 class="gold">Where Elegance Meets Class</h2>
-<p>Welcome to GlamZeal Jewelry. Shop beautiful jewelry for wholesale, retail and resellers.</p>
-<div class="card">
-<b>NEW BRANCH</b>
-<p>Textile Block 1, Shop 17<br>
-APT GL Tradefair Market<br>
-Ojo, Lagos</p>
-<p class="gold">WhatsApp: +234 814 049 2790</p>
-</div>
-<button onclick="page('shop')">SHOP NOW</button>
+
+  <section class="hero">
+    <h2 class="gold">Where Elegance Meets Class</h2>
+
+    <p>
+      Welcome to <strong>GlamZeal Jewelry</strong> — your destination
+      for beautiful and affordable jewelry for wholesalers, retailers,
+      resellers and final consumers.
+    </p>
+
+    <button onclick="page('shop')">EXPLORE COLLECTION</button>
+  </section>
+
+  <div class="branch">
+    <h3>Our New Branch</h3>
+
+    <p>
+      <strong>Textile Block 1, Shop 17</strong><br>
+      APT GL Tradefair Market<br>
+      Ojo, Lagos
+    </p>
+
+    <p class="gold">
+      WhatsApp: +234 814 049 2790
+    </p>
+
+    <p>
+      Visit us and discover beautiful pieces designed to add
+      elegance and class to every look.
+    </p>
+  </div>
+
+  <div class="contact">
+    <h3 class="gold">GlamZeal Jewelry</h3>
+    <p>Wholesale • Retail • Resellers</p>
+    <p>
+      WhatsApp:
+      <a href="https://wa.me/2348140492790">
+        +234 814 049 2790
+      </a>
+    </p>
+  </div>
+
 </div>
 
+
+<!-- SHOP -->
 <div id="shop" class="page">
-<h2 class="gold">Our Jewelry Collection</h2>
 
-<div class="card">
-<h3>Luxury Necklace Set</h3>
-<p>Elegant premium necklace set</p>
-<p class="price">₦18,500</p>
-<button onclick="add('Luxury Necklace Set',18500)">ADD TO CART</button>
+  <h2 class="section-title">Zirconia Collection</h2>
+
+  <p style="text-align:center;color:#aaa;font-size:13px;">
+    Complete zirconia sets • Wholesale price
+  </p>
+
+  <div class="products">
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260715-WA0200.jpg" alt="Zirconia Complete Set 1">
+      <h3 class="product-name">Zirconia Complete Set 1</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 1',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260715-WA0213.jpg" alt="Zirconia Complete Set 2">
+      <h3 class="product-name">Zirconia Complete Set 2</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 2',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260725-WA0159.jpg" alt="Zirconia Complete Set 3">
+      <h3 class="product-name">Zirconia Complete Set 3</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 3',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260725-WA0181.jpg" alt="Zirconia Complete Set 4">
+      <h3 class="product-name">Zirconia Complete Set 4</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 4',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260806-WA0301.jpg" alt="Zirconia Complete Set 5">
+      <h3 class="product-name">Zirconia Complete Set 5</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 5',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260814-WA0107.jpg" alt="Zirconia Complete Set 6">
+      <h3 class="product-name">Zirconia Complete Set 6</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 6',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260814-WA0111.jpg" alt="Zirconia Complete Set 7">
+      <h3 class="product-name">Zirconia Complete Set 7</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 7',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260814-WA0113.jpg" alt="Zirconia Complete Set 8">
+      <h3 class="product-name">Zirconia Complete Set 8</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 8',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260814-WA0138.jpg" alt="Zirconia Complete Set 9">
+      <h3 class="product-name">Zirconia Complete Set 9</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 9',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+    <div class="card">
+      <img class="product-image" src="IMG-20260824-WA0036.jpg" alt="Zirconia Complete Set 10">
+      <h3 class="product-name">Zirconia Complete Set 10</h3>
+      <p class="product-type">Complete Zirconia Set</p>
+      <div class="price">₦17,000</div>
+      <div class="wholesale">Wholesale Price</div>
+      <button class="add-btn" onclick="add('Zirconia Complete Set 10',17000)">
+        ADD TO CART
+      </button>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="card">
-<h3>3-in-1 Bangle Set</h3>
-<p>Beautiful 3-piece bangle set</p>
-<p class="price">₦12,000</p>
-<button onclick="add('3-in-1 Bangle Set',12000)">ADD TO CART</button>
-</div>
 
-<div class="card">
-<h3>Elegant Earrings</h3>
-<p>Classy everyday earrings</p>
-<p class="price">₦7,500</p>
-<button onclick="add('Elegant Earrings',7500)">ADD TO CART</button>
-</div>
-
-<div class="card">
-<h3>Premium Ring</h3>
-<p>Luxury fashion ring</p>
-<p class="price">₦6,500</p>
-<button onclick="add('Premium Ring',6500)">ADD TO CART</button>
-</div>
-</div>
-
+<!-- CART -->
 <div id="cart" class="page">
-<h2 class="gold">Shopping Cart</h2>
-<div id="items"></div>
-<h3 id="total" class="gold">Total: ₦0</h3>
 
-<div class="card">
-<h3>Place Your Order</h3>
-<input id="name" placeholder="Full Name">
-<input id="phone" placeholder="WhatsApp Number">
-<input id="address" placeholder="Delivery Address">
-<button onclick="order()">PLACE ORDER</button>
-</div>
+  <h2 class="section-title">Your Shopping Cart</h2>
+
+  <div class="card">
+    <div id="items"></div>
+
+    <div id="total" class="total-box">
+      Total: ₦0
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px;">
+
+    <h3 class="form-title">Place Your Order</h3>
+
+    <input id="name" placeholder="Full Name">
+
+    <input id="phone" placeholder="WhatsApp Number">
+
+    <input id="address" placeholder="Delivery Address">
+
+    <button class="full-btn" onclick="order()">
+      PLACE ORDER ON WHATSAPP
+    </button>
+
+  </div>
+
 </div>
 
+
+<!-- LOGIN -->
 <div id="login" class="page">
-<div class="card">
-<h2 class="gold">Customer Login</h2>
-<input placeholder="Email Address">
-<input type="password" placeholder="Password">
-<button onclick="alert('Welcome to GlamZeal!')">LOGIN</button>
-</div>
+
+  <div class="card">
+
+    <h2 class="form-title">Customer Login</h2>
+
+    <p style="color:#aaa;font-size:13px;">
+      Customer accounts will allow you to access your orders
+      and shop with GlamZeal more easily.
+    </p>
+
+    <input id="email" placeholder="Email Address">
+
+    <input id="password" type="password" placeholder="Password">
+
+    <button class="full-btn" onclick="login()">
+      LOGIN
+    </button>
+
+  </div>
+
 </div>
 
 </main>
 
+<footer>
+  © 2026 GLAMZEAL JEWELRY<br>
+  WHERE ELEGANCE MEETS CLASS
+</footer>
+
+
 <script>
+
 let cart=[];
 
 function page(x){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
-document.getElementById(x).classList.add('show');
-if(x=='cart')showCart();
+
+  document.querySelectorAll('.page')
+  .forEach(p=>p.classList.remove('show'));
+
+  document.getElementById(x)
+  .classList.add('show');
+
+  window.scrollTo(0,0);
+
+  if(x==='cart'){
+    showCart();
+  }
 }
+
 
 function add(name,price){
-cart.push({name,price});
-document.getElementById('num').innerText=cart.length;
-alert(name+' added to cart!');
+
+  cart.push({
+    name:name,
+    price:price
+  });
+
+  document.getElementById('num')
+  .innerText=cart.length;
+
+  alert(name+' added to your cart!');
+
 }
+
 
 function showCart(){
-let box=document.getElementById('items'),total=0;
-if(!cart.length){box.innerHTML='<p>Your cart is empty.</p>';document.getElementById('total').innerText='Total: ₦0';return}
-box.innerHTML='';
-cart.forEach((x,i)=>{
-total+=x.price;
-box.innerHTML+=`<div class="card">${x.name}<br><span class="gold">₦${x.price.toLocaleString()}</span></div>`;
-});
-document.getElementById('total').innerText='Total: ₦'+total.toLocaleString();
+
+  let box=document.getElementById('items');
+  let total=0;
+
+  if(!cart.length){
+
+    box.innerHTML=
+      '<div class="empty">Your cart is empty.<br><br>Go to the shop and choose your favorite jewelry.</div>';
+
+    document.getElementById('total')
+      .innerText='Total: ₦0';
+
+    return;
+  }
+
+  box.innerHTML='';
+
+  cart.forEach((item,index)=>{
+
+    total+=item.price;
+
+    box.innerHTML+=`
+      <div class="cart-item">
+
+        <div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="gold">₦${item.price.toLocaleString()}</div>
+        </div>
+
+        <button class="remove-btn"
+          onclick="removeItem(${index})">
+          REMOVE
+        </button>
+
+      </div>
+    `;
+
+  });
+
+  document.getElementById('total')
+    .innerText='Total: ₦'+total.toLocaleString();
+
 }
 
-function order(){
-if(!cart.length){alert('Your cart is empty');return}
-let n=document.getElementById('name').value;
-let p=document.getElementById('phone').value;
-let a=document.getElementById('address').value;
-if(!n||!p||!a){alert('Please complete your details');return}
-let text='Hello GlamZeal, I want to place an order. Customer: '+n+' Phone: '+p+' Address: '+a;
-window.location.href='https://wa.me/2348140492790?text='+encodeURIComponent(text);
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  document.getElementById('num')
+    .innerText=cart.length;
+
+  showCart();
+
 }
+
+
+function order(){
+
+  if(!cart.length){
+
+    alert('Your cart is empty.');
+
+    return;
+  }
+
+  let name=document.getElementById('name').value.trim();
+  let phone=document.getElementById('phone').value.trim();
+  let address=document.getElementById('address').value.trim();
+
+  if(!name || !phone || !address){
+
+    alert('Please complete your name, WhatsApp number and delivery address.');
+
+    return;
+  }
+
+  let total=cart.reduce(
+    (sum,item)=>sum+item.price,
+    0
+  );
+
+  let products=cart.map(
+    item=>'• '+item.name+' - ₦'+item.price.toLocaleString()
+  ).join('\n');
+
+  let text=
+`Hello GlamZeal Jewelry,
+
+I would like to place an order.
+
+Customer Name: ${name}
+WhatsApp Number: ${phone}
+
+Order:
+${products}
+
+Total: ₦${total.toLocaleString()}
+
+Delivery Address:
+${address}
+
+Thank you.`;
+
+  window.location.href=
+    'https://wa.me/2348140492790?text='+
+    encodeURIComponent(text);
+
+}
+
+
+function login(){
+
+  let email=document.getElementById('email').value.trim();
+  let password=document.getElementById('password').value.trim();
+
+  if(!email || !password){
+
+    alert('Please enter your email and password.');
+
+    return;
+  }
+
+  alert(
+    'Welcome to GlamZeal Jewelry! Customer account features will be connected in the next stage.'
+  );
+
+}
+
 </script>
 
 </body>
