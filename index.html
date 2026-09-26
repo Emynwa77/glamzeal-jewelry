@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GlamZeal Jewelry</title>
+<style>
+body{margin:0;background:#080808;color:white;font-family:Arial}
+header{text-align:center;padding:25px;background:#0d0d0d;border-bottom:1px solid #c9a227}
+h1{color:#d4af37;font-family:Georgia;font-size:32px}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+button{background:#d4af37;border:0;padding:12px 16px;border-radius:7px;font-weight:bold}
+main{padding:20px;max-width:700px;margin:auto}
+.page{display:none}.show{display:block}
+.card{background:#151515;padding:15px;margin:12px 0;border:1px solid #333;border-radius:10px}
+.gold{color:#d4af37}
+input{width:100%;padding:13px;margin:7px 0;background:#151515;color:white;border:1px solid #555;border-radius:7px}
+.price{color:#d4af37;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>GLAMZEAL</h1>
+<p>JEWELRY • WHOLESALE • RETAIL</p>
+<nav>
+<button onclick="page('home')">Home</button>
+<button onclick="page('shop')">Shop</button>
+<button onclick="page('cart')">Cart (<span id="num">0</span>)</button>
+<button onclick="page('login')">Login</button>
+</nav>
+</header>
+
+<main>
+
+<div id="home" class="page show">
+<h2 class="gold">Where Elegance Meets Class</h2>
+<p>Welcome to GlamZeal Jewelry. Shop beautiful jewelry for wholesale, retail and resellers.</p>
+<div class="card">
+<b>NEW BRANCH</b>
+<p>Textile Block 1, Shop 17<br>
+APT GL Tradefair Market<br>
+Ojo, Lagos</p>
+<p class="gold">WhatsApp: +234 814 049 2790</p>
+</div>
+<button onclick="page('shop')">SHOP NOW</button>
+</div>
+
+<div id="shop" class="page">
+<h2 class="gold">Our Jewelry Collection</h2>
+
+<div class="card">
+<h3>Luxury Necklace Set</h3>
+<p>Elegant premium necklace set</p>
+<p class="price">₦18,500</p>
+<button onclick="add('Luxury Necklace Set',18500)">ADD TO CART</button>
+</div>
+
+<div class="card">
+<h3>3-in-1 Bangle Set</h3>
+<p>Beautiful 3-piece bangle set</p>
+<p class="price">₦12,000</p>
+<button onclick="add('3-in-1 Bangle Set',12000)">ADD TO CART</button>
+</div>
+
+<div class="card">
+<h3>Elegant Earrings</h3>
+<p>Classy everyday earrings</p>
+<p class="price">₦7,500</p>
+<button onclick="add('Elegant Earrings',7500)">ADD TO CART</button>
+</div>
+
+<div class="card">
+<h3>Premium Ring</h3>
+<p>Luxury fashion ring</p>
+<p class="price">₦6,500</p>
+<button onclick="add('Premium Ring',6500)">ADD TO CART</button>
+</div>
+</div>
+
+<div id="cart" class="page">
+<h2 class="gold">Shopping Cart</h2>
+<div id="items"></div>
+<h3 id="total" class="gold">Total: ₦0</h3>
+
+<div class="card">
+<h3>Place Your Order</h3>
+<input id="name" placeholder="Full Name">
+<input id="phone" placeholder="WhatsApp Number">
+<input id="address" placeholder="Delivery Address">
+<button onclick="order()">PLACE ORDER</button>
+</div>
+</div>
+
+<div id="login" class="page">
+<div class="card">
+<h2 class="gold">Customer Login</h2>
+<input placeholder="Email Address">
+<input type="password" placeholder="Password">
+<button onclick="alert('Welcome to GlamZeal!')">LOGIN</button>
+</div>
+</div>
+
+</main>
+
+<script>
+let cart=[];
+
+function page(x){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+document.getElementById(x).classList.add('show');
+if(x=='cart')showCart();
+}
+
+function add(name,price){
+cart.push({name,price});
+document.getElementById('num').innerText=cart.length;
+alert(name+' added to cart!');
+}
+
+function showCart(){
+let box=document.getElementById('items'),total=0;
+if(!cart.length){box.innerHTML='<p>Your cart is empty.</p>';document.getElementById('total').innerText='Total: ₦0';return}
+box.innerHTML='';
+cart.forEach((x,i)=>{
+total+=x.price;
+box.innerHTML+=`<div class="card">${x.name}<br><span class="gold">₦${x.price.toLocaleString()}</span></div>`;
+});
+document.getElementById('total').innerText='Total: ₦'+total.toLocaleString();
+}
+
+function order(){
+if(!cart.length){alert('Your cart is empty');return}
+let n=document.getElementById('name').value;
+let p=document.getElementById('phone').value;
+let a=document.getElementById('address').value;
+if(!n||!p||!a){alert('Please complete your details');return}
+let text='Hello GlamZeal, I want to place an order. Customer: '+n+' Phone: '+p+' Address: '+a;
+window.location.href='https://wa.me/2348140492790?text='+encodeURIComponent(text);
+}
+</script>
+
+</body>
+</html>
