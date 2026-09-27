@@ -1162,7 +1162,12 @@ onclick="login()">
 LOGIN
 
 </button>
-
+<button
+  class="full-btn"
+  onclick="signup()"
+>
+  CREATE ACCOUNT
+</button>
 </div>
 
 </div>
@@ -1592,7 +1597,38 @@ async function login(){
 
 }
 
+async function signup(){
 
+  const email =
+    document.getElementById('email').value.trim();
+
+  const password =
+    document.getElementById('password').value.trim();
+
+  if(!email || !password){
+    alert('Please enter your email and password.');
+    return;
+  }
+
+  if(password.length < 6){
+    alert('Password must be at least 6 characters.');
+    return;
+  }
+
+  const { data, error } =
+    await supabase.auth.signUp({
+      email: email,
+      password: password
+    });
+
+  if(error){
+    alert('Account creation failed: ' + error.message);
+    return;
+  }
+
+  alert('Account created successfully! Please check your email to confirm your account.');
+
+}
 
 
 
