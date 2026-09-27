@@ -1597,7 +1597,7 @@ async function login(){
 
 }
 
-async function signup(){
+ async function signup(){
 
   const email =
     document.getElementById('email').value.trim();
@@ -1614,25 +1614,29 @@ async function signup(){
     alert('Password must be at least 6 characters.');
     return;
   }
-alert('Connecting to Supabase...');
 
-const { data, error } =
-  await supabase.auth.signUp({
-    email: email,
-    password: password
-  });
-  
+  alert('Connecting to Supabase...');
 
-  if(error){
-    alert('Account creation failed: ' + error.message);
-    return;
+  try {
+
+    const { data, error } =
+      await supabase.auth.signUp({
+        email: email,
+        password: password
+      });
+
+    if(error){
+      alert('Supabase error: ' + error.message);
+      return;
+    }
+
+    alert('Account created successfully! Please check your email.');
+
+  } catch (err) {
+
+    alert('Connection error: ' + err.message);
+
   }
-
-  alert('Account created successfully! Please check your email to confirm your account.');
-
-}
-
-
 
 
 
