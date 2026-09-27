@@ -1564,33 +1564,42 @@ encodeURIComponent(text);
 }
 
 
-function login(){
+async function login(){
 
-let email=
-document.getElementById('email')
-.value.trim();
+  const email =
+    document.getElementById('email').value.trim();
 
-let password=
-document.getElementById('password')
-.value.trim();
+  const password =
+    document.getElementById('password').value.trim();
 
+  if(!email || !password){
+    alert('Please enter your email and password.');
+    return;
+  }
 
-if(!email || !password){
+  const { data, error } =
+    await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
 
-alert(
-'Please enter your email and password.'
-);
+  if(error){
+    alert('Login failed: ' + error.message);
+    return;
+  }
 
-return;
+  alert('Welcome back to GlamZeal Jewelry!');
 
 }
 
 
-alert(
-'Welcome to GlamZeal Jewelry! Customer account features will be connected in the next stage.'
-);
 
-}
+
+
+
+
+
+
 
 </script>
 
